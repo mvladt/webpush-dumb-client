@@ -1,7 +1,8 @@
 {
-  "name": "My Sample PWA",
-  "short_name": "SamplePWA",
-  "start_url": "/",
+  "name": "WebPushDumbClient",
+  "short_name": "WebPushDumbClient",
+  "start_url": "/webpush-dumb-client/",
+  "scope": "/webpush-dumb-client/",
   "display": "standalone",
   "theme_color": "royalblue",
   "icons": [
