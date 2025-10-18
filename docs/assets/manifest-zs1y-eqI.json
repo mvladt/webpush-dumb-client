@@ -1,0 +1,14 @@
+{
+  "name": "My Sample PWA",
+  "short_name": "SamplePWA",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "royalblue",
+  "icons": [
+    {
+      "src": "vite.svg",
+      "sizes": "192x192",
+      "type": "image/svg"
+    }
+  ]
+}

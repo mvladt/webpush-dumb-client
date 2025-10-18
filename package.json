@@ -2,7 +2,7 @@
   "name": "webpush-dumb-client",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build:ghpages": "vite build --outDir=docs --base=webpush-dumb-client",
     "preview": "vite preview --host"
   },
   "dependencies": {
