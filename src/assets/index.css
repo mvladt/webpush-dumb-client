@@ -1,4 +1,8 @@
-@import "./unsets.css";
+/* TODO: Рефакторинг стилей. */
+
+* {
+  box-sizing: border-box;
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -15,7 +19,7 @@
 }
 
 :root {
-  --color-blue-l: rgb(0, 122, 255);
+  --color-blue-l: 0, 122, 255;
 }
 
 @media (prefers-color-scheme: light) {
@@ -23,4 +27,43 @@
     color: #213547;
     background-color: #ffffff;
   }
+}
+
+#root {
+  width: min(500px, 90vw);
+  padding: 1rem;
+  margin: auto;
+}
+
+input,
+button {
+  height: 35px;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+  font-size: inherit;
+  font-family: inherit;
+  border: 1px solid;
+  border-color: rgb(var(--color-blue-l));
+  border-radius: 5px;
+}
+
+button {
+  min-height: 40px;
+  background-color: rgba(var(--color-blue-l), 0.2);
+  color: rgb(var(--color-blue-l));
+}
+
+p {
+  margin-block: 0.5rem;
+}
+
+li {
+  margin-block: 1rem;
+}
+
+h1,
+h2,
+h3 {
+  color: rgb(var(--color-blue-l));
 }

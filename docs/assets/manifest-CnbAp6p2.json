@@ -1,0 +1,7 @@
+{
+  "name": "My Sample PWA",
+  "short_name": "SamplePWA",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "cornflowerblue"
+}
