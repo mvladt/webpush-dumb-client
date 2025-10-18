@@ -11,12 +11,12 @@ export default defineConfig({
     outDir: "docs",
   },
   server: {
-    proxy: {
-      "/api": {
-        target: "https://scheduler.push.mvladt.ru",
-        changeOrigin: true,
-      },
-    },
+    // proxy: {
+    //   "/api": {
+    //     target: "https://scheduler.push.mvladt.ru",
+    //     changeOrigin: true,
+    //   },
+    // },
     // https: true,
   },
 });
