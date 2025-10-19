@@ -29,6 +29,13 @@ function App() {
       ...notification,
       subscription: subscription.toJSON(),
     });
+
+    setNotification({
+      datetime: "",
+      payload: { text: "" },
+    });
+
+    alert("Уведомление создано!");
   };
 
   return (
