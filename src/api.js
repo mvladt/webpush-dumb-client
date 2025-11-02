@@ -1,5 +1,7 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 const schedule = async (notification) => {
-  await fetch("https://scheduler.push.mvladt.ru/api/notifications", {
+  await fetch(`${API_URL}/notifications`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(notification),
@@ -7,7 +9,7 @@ const schedule = async (notification) => {
 };
 
 const getKey = async () => {
-  const response = await fetch("https://scheduler.push.mvladt.ru/api/key");
+  const response = await fetch(`${API_URL}/key`);
   const key = await response.text();
 
   if (!key) throw new Error("Сервер не прислал VAPID key :(");
