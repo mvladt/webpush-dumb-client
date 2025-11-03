@@ -1,6 +1,8 @@
+import type { NotificationEntity } from "./types";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
-const schedule = async (notification) => {
+const schedule = async (notification: NotificationEntity): Promise<void> => {
   await fetch(`${API_URL}/notifications`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -8,7 +10,7 @@ const schedule = async (notification) => {
   });
 };
 
-const getKey = async () => {
+const getKey = async (): Promise<string> => {
   const response = await fetch(`${API_URL}/key`);
   const key = await response.text();
 

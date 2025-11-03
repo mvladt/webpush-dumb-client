@@ -1,7 +1,9 @@
-export const dumbUUID = () =>
+export const dumbUUID = (): string =>
   `id-${Date.now().toString(16)}-${Math.random().toString(16).slice(2)}`;
 
-export const urlBase64ToUint8Array = (base64String) => {
+export const urlBase64ToUint8Array = (
+  base64String: string
+): Uint8Array<ArrayBuffer> => {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
     .replace(/\-/g, "+")

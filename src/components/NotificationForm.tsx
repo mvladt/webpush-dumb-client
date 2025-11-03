@@ -1,9 +1,19 @@
+import React, { ChangeEvent, FormEvent } from "react";
+
+import type { NotificationEntity } from "../types";
+
+type Props = {
+  notification?: NotificationEntity;
+  onChange?: (notification: NotificationEntity) => void;
+  onSubmit?: (notification: NotificationEntity) => void;
+};
+
 export default function NotificationForm({
   notification = { id: "", payload: { text: "" }, datetime: "" },
-  onChange = (f) => f,
-  onSubmit = (f) => f,
-}) {
-  const handleSubmit = (event) => {
+  onChange = () => {},
+  onSubmit = () => {},
+}: Props) {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit(notification);
   };
@@ -18,7 +28,7 @@ export default function NotificationForm({
           <input
             type="text"
             value={notification.payload.text}
-            onChange={(event) =>
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
               onChange({
                 ...notification,
                 payload: { ...notification.payload, text: event.target.value },
@@ -34,7 +44,7 @@ export default function NotificationForm({
           <input
             type="datetime-local"
             value={notification.datetime}
-            onChange={(event) =>
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
               onChange({
                 ...notification,
                 datetime: event.target.value,
@@ -45,7 +55,7 @@ export default function NotificationForm({
         </label>
       </div>
       <div>
-        <button>Создать</button>
+        <button type="submit">Создать</button>
       </div>
     </form>
   );

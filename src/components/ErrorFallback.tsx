@@ -1,4 +1,9 @@
-export default function ErrorFallback({ message, stack }) {
+type Props = {
+  message?: string;
+  stack?: string;
+};
+
+export default function ErrorFallback({ message, stack }: Props) {
   return (
     <>
       <h1>Блин, ошибка!</h1>

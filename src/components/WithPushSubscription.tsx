@@ -1,15 +1,21 @@
-import { useState, useEffect } from "react";
-import { urlBase64ToUint8Array } from "../tools.js";
-import api from "../api.js";
+import { useState, useEffect, ReactNode } from "react";
+import { urlBase64ToUint8Array } from "../tools";
+import api from "../api";
 
-export default function WithPushSubscription({ children }) {
+export type Props = {
+  children: ReactNode;
+};
+
+export default function WithPushSubscription({ children }: Props) {
   const fallback = "Не получена PushSubscription...";
 
-  const [subscription, setSubscription] = useState();
+  const [subscription, setSubscription] = useState<
+    PushSubscription | undefined
+  >();
 
   const asyncEffect = async () => {
     const key = await api.getKey();
-    const options = {
+    const options: PushSubscriptionOptionsInit = {
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(key),
     };
