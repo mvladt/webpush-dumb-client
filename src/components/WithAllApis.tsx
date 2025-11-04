@@ -14,13 +14,17 @@ export default function WithAllApis({ children }: Props) {
     isPushApiAvailable &&
     isServiceWorkerApiAvailable;
 
-  const fallback = `
-    Необходимые API не поддерживаются...
-    А именно — 
-      ${isNotificationsApiAvailable ? " Notifications API;" : ""} 
-      ${isPushApiAvailable ? " Push API;" : ""} 
-      ${isServiceWorkerApiAvailable ? " Service Worker API;" : ""}
-    `;
+  const fallback = (
+    <div>
+      <h2>Нет пути</h2>
+      <p>На вашем устройстве не поддерживаются необходимые API:</p>
+      <ul>
+        {!isNotificationsApiAvailable && <li>Notifications API</li>}
+        {!isPushApiAvailable && <li>Push API</li>}
+        {!isServiceWorkerApiAvailable && <li>Service Worker API</li>}
+      </ul>
+    </div>
+  );
 
   return <>{isAllApisAvailable ? children : fallback}</>;
 }
