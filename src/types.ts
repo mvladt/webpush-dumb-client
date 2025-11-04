@@ -6,4 +6,5 @@ export type NotificationEntity = {
   id: string;
   datetime: string;
   payload: NotificationPayload;
+  subscription?: PushSubscriptionJSON;
 };

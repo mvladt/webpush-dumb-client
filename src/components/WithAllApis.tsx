@@ -4,12 +4,12 @@ export type Props = {
   children: ReactNode;
 };
 
-export default function WithAllApi({ children }: Props) {
+export default function WithAllApis({ children }: Props) {
   const isNotificationsApiAvailable = Boolean(window.Notification);
   const isPushApiAvailable = Boolean(window.PushManager);
   const isServiceWorkerApiAvailable = Boolean(window.ServiceWorker);
 
-  const isAllApiAvailable =
+  const isAllApisAvailable =
     isNotificationsApiAvailable &&
     isPushApiAvailable &&
     isServiceWorkerApiAvailable;
@@ -22,5 +22,5 @@ export default function WithAllApi({ children }: Props) {
       ${isServiceWorkerApiAvailable ? " Service Worker API;" : ""}
     `;
 
-  return <>{isAllApiAvailable ? children : fallback}</>;
+  return <>{isAllApisAvailable ? children : fallback}</>;
 }
