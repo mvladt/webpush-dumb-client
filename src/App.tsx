@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ErrorBoundary from "./components/ErrorBoundary";
 import ErrorFallback from "./components/ErrorFallback";
@@ -7,7 +7,7 @@ import WithAllApis from "./components/WithAllApis";
 import WithPermission from "./components/WithPermission";
 import WithPushSubscription from "./components/WithPushSubscription";
 import WithServiceWorker from "./components/WithServiceWorker";
-import { dumbUUID } from "./tools";
+import { dumbUUID, urlBase64ToUint8Array } from "./tools";
 import api from "./api";
 
 import type { NotificationEntity } from "./types";
@@ -18,6 +18,19 @@ function App() {
     datetime: "",
     payload: { text: "" },
   });
+
+  const [options, setOptions] = useState<
+    PushSubscriptionOptionsInit | undefined
+  >();
+
+  useEffect(() => {
+    api.getKey().then((key) => {
+      setOptions({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(key),
+      });
+    });
+  }, []);
 
   const handleChange = (changing: NotificationEntity) => {
     setNotification(changing);
@@ -56,7 +69,7 @@ function App() {
       <WithAllApis>
         <WithServiceWorker scriptURL="sw.js">
           <WithPermission>
-            <WithPushSubscription>
+            <WithPushSubscription options={options}>
               <NotificationForm
                 notification={notification}
                 onChange={handleChange}
