@@ -54,7 +54,7 @@ function App() {
   return (
     <ErrorBoundary fallback={ErrorFallback}>
       <WithAllApis>
-        <WithServiceWorker>
+        <WithServiceWorker scriptURL="sw.js">
           <WithPermission>
             <WithPushSubscription>
               <NotificationForm
