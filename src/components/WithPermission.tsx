@@ -13,12 +13,17 @@ export default function WithPermission({ children }: Props) {
     Notification.requestPermission().then(setPermission);
   };
 
-  return (
+  const fallback = (
     <>
-      {permission === "granted" ? (
-        children
-      ) : permission === "denied" ? (
-        `Блин, похоже для ${window.location.origin} установлен запрет на уведомления. Снять можно в настройках браузера.`
+      {permission === "denied" ? (
+        <>
+          <h2>Что-то с разрешением на уведомления</h2>
+          <p>
+            Похоже для <a href=".">{window.location.origin}</a> уведомления
+            запрещены.
+          </p>
+          <p>Снять запрет можно в настройках браузера.</p>
+        </>
       ) : (
         <button onClick={handlePermissionRequest}>
           Дать разрешение на уведомления
@@ -26,4 +31,6 @@ export default function WithPermission({ children }: Props) {
       )}
     </>
   );
+
+  return <>{permission === "granted" ? children : fallback}</>;
 }
